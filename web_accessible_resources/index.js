@@ -59,14 +59,14 @@
     }
 
     function overwriteNotification () {
-        var createNotification = window.webkitNotifications.createNotification;
-        window.webkitNotifications.createNotification = function (icon, title, message) {
+        var createNotification = window.NotificationAPI.createNotification;
+        window.NotificationAPI.createNotification = function (icon, title, message) {
             if (notificationChecked[title]) {
                 return {
                     'show' : function () {}
                 };
             }
-            return createNotification.apply(window.webkitNotifications, arguments);
+            return createNotification.apply(window.NotificationAPI, arguments);
         };
     }
 })();
